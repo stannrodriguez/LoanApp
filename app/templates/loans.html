@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Loans</h1>
+    {% for loan in loans %}
+        <h4>{{ loan.name}}</h4> 
+            Current Balance: {{ loan.balance}} <br>
+            Interest Rate: {{ loan.int_rate}} <br>
+    
+    {% endfor %}
+
+    <h3>Add Loans</h3>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.name.label }}<br>
+            {{ form.name(size=32) }}<br>
+            {% for error in form.name.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.balance.label }}<br>
+            {{ form.balance(size=64) }}<br>
+            {% for error in form.balance.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.int_rate.label }}<br>
+            {{ form.int_rate(size=32) }}<br>
+            {% for error in form.int_rate.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+
+    </form>
+
+    <a href="{{ url_for('income') }}"><button>Go to next step!</button></a>
+{% endblock %}
+

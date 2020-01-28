@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Income</h1>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.income.label }}<br>
+            {{ form.income(size=32) }}<br>
+            {% for error in form.income.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.income_pct.label }}<br>
+            {{ form.income_pct(size=64) }}<br>
+            {% for error in form.income_pct.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+
+    </form>
+    <a href="{{ url_for('strategy') }}"><button>Create Loan Payoff Strategy</button></a>
+    
+{% endblock %}
