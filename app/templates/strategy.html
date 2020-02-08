@@ -1,3 +1,15 @@
+{% extends "layout.html" %}
+
 {% block content %}
 	<h1> Strategy </h1>
+
+	<h3>Data Preview <h3>
+	{{ data_preview|safe }}
+
+	<h3> Export Detailed Plan <h3>
+	<a href="{{ url_for('download') }}"><button class="btn">Download!</button></a>
+
+	<h3> Loan Balance Over Time <h3>
+	{{ chart|safe }}
 {% endblock %}
+
